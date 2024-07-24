@@ -1,0 +1,28 @@
+{% include "base.html" %} {% block content %}
+<div class="container">
+    <section class="row">
+        <div class="col-md-12">
+            <div class="card text-white" style="background-color: #32012f">
+                <div class="card-header">
+                    <h1>{{ article.title }}</h1>
+                    <p>
+                        <i class="bi bi-person-circle fs-4 pr-2"></i
+                        ><b class="fs-4" style="padding-left: 12px"
+                            >{{ article.author }}</b
+                        >
+                    </p>
+                    <p>{{article.published}}</p>
+                </div>
+                <div class="card-body">
+                    <div id="editor">
+                        <p>{{ article.content }}</p>
+                    </div>
+                </div>
+                <div class="card-footer text-muted"></div>
+            </div>
+        </div>
+    </section>
+    <!--RECOMMENDED ARTICLES -->
+    <section class="row"></section>
+</div>
+{% endblock %}

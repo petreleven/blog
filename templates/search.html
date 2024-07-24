@@ -1,0 +1,33 @@
+{% for a in filtered %}
+<div class="row justify-content-center mb-2">
+  <div class="col-12 d-flex justify-content-center">
+    <div
+      class="card"
+      style="
+        background-color: transparent;
+        border-color: #524c42;
+        height: 520px;
+        width: 640px;
+      ">
+      <img
+        class="img-top"
+        src="{{a.image.url}}"
+        style="object-fit: cover; object-position: center" />
+      <div class="card-body">
+        <a
+          href="{% url 'article_content' a.id %}"
+          class="text-white fs-3"
+          style="text-decoration: none" 
+          hx-target="#maincontent"
+          >{{a.title}}</a>
+      </div>
+      <div class="card-footer">
+        <div class="d-flex flex-col">
+          <span class="bi bi-calendar-date-fill text-white"></span>
+          <p class="text-white">{{a.published}}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endfor %}

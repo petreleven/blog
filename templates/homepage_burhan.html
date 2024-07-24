@@ -1,0 +1,30 @@
+{% include "base.html" %} {% block content %}
+<section id="maincontent">
+  <div class="row">
+    <div class="col-lg-9">
+      <div style="background-color: Yellow">
+        <h1>Welcome to the Homepage</h1>
+      </div>
+    </div>
+    <div class="col-lg-3">
+      <div style="color: black"></div>
+    </div>
+  </div>
+  {% for x in all_articles%}
+  <div>
+    <img
+      src="https://realisetraining.com/wp-content/uploads/stagecoach-header.jpg"
+      style="height: 20%; width: 10%"
+    />
+    <a
+      hx-target="#maincontent"
+      hx-swap="innerHTML"
+      hx-get="{% url 'article_content' x.id %}"
+      hx-trigger="click"
+      >{{ x.title }}</a
+    >
+    <div>{{a.published}} {{a.updated}}</div>
+  </div>
+  {% endfor %}
+</section>
+{% endblock content %}

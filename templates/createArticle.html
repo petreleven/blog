@@ -1,0 +1,53 @@
+{% include "base.html" %} {% block content %}
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-12">
+            <h2 class="text-center text-white mb-4">Create New Article</h2>
+            <form
+                method="POST"
+                action="{% url 'createArticle' %}"
+                enctype="multipart/form-data"
+            >
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="image">Image:</label>
+                    <input
+                        name="image"
+                        type="file"
+                        class="form-control"
+                        id="image"
+                    />
+                </div>
+                <div class="form-group">
+                    <label for="title" class="text-white">Title:</label>
+                    <input
+                        name="title"
+                        required
+                        class="form-control"
+                        id="title"
+                    />
+                </div>
+                <div class="form-group">
+                    <label for="content" class="text-white">Content:</label>
+                    <textarea name="content" id="content"></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary btn-block mt-4">
+                    + Publish
+                </button>
+            </form>
+        </div>
+    </div>
+</div>
+<script>
+    tinymce.init({
+        selector: "#content",
+        license_key: "gpl",
+        plugins: "lists link image preview",
+        toolbar:
+            "undo redo | bold italic | bullist numlist outdent indent | link image",
+        height: 500,
+        menubar: false,
+        content_css: ["//www.tiny.cloud/css/codepen.min.css"],
+    });
+</script>
+{% endblock content %}
