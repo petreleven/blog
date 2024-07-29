@@ -1,8 +1,10 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.contrib.auth.models import AbstractUser
 
-class Author(models.Model):
+class Author(AbstractUser):
   name = models.CharField(max_length=40)
+
 
 
 class Article(models.Model):
@@ -22,4 +24,3 @@ class Comment(models.Model):
   content = models.TextField()
   created = models.DateTimeField(auto_now_add = True)
   article = models.ForeignKey(Article, on_delete = models.CASCADE, related_name = "comments")
-

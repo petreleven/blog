@@ -48,3 +48,12 @@ def  updateArticle(request, id):
     return render(request, "updateArticle.html", {
         "article" : article_instance
     })
+
+def deleteArticle(request, id):
+    article_instance = Article.objects.get(pk=id)
+    if request.method == "POST":
+        article_instance.delete()
+
+    return render(request, "deleteArticle.html", {
+            "article" : article_instance
+    })
